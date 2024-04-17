@@ -1,0 +1,53 @@
+import java.util.Scanner;
+class Player{
+    int n;
+    public void guess(){
+    Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your guess: ");
+        n = scanner.nextInt();
+}
+}
+class Game{
+    Player p;
+    void startGame(){
+        p=new Player();
+        int guessp;
+        boolean pisRight=false;
+        int target=(int)(Math.random()*100);
+        int attempt=0;
+        System.out.println("Iam Thinking of a Number between 0 & 100...");
+        while(attempt<5){
+            p.guess();
+            guessp=p.n;
+            System.out.println("Your Guess ? "+guessp);
+            if(target==guessp)
+            pisRight=true;
+            if(target>guessp ){
+                System.out.println("Your guess is too low than the target..");
+            }
+            else if(target<guessp){
+                System.out.println("Your guess is too high than the target..");
+            }
+            if(pisRight){
+                System.out.println("Your are a winner......");
+                System.out.println("Game Over");
+                break;
+            }
+            else{
+                System.out.println("System won the Match");
+               
+            }
+            attempt++;
+        }
+        if(!pisRight){
+            System.out.println("You Lost the Match..");
+             System.out.println("Missed number is "+target);
+        }
+    }
+}
+public class GuessingGame{
+    public static void main(String[] args){
+        Game game=new Game();
+        game.startGame();
+    }
+}
